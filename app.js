@@ -1,20 +1,18 @@
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 require('dotenv/config');
-const app = express();
+
 
 app.use(express.json());
 
 // Import Routes
 const postsRoute = require('./routes/post')
+const authRoute = require('./routes/auth')
 
-//MIDDLEWARES
-app.use('/posts', postsRoute);
-
-// ROUTES
-app.get('/', (req, res) => {
-    res.send('we are on home');
-});
+// ROUTE MIDDLEWARES
+app.use('/api/posts', postsRoute);
+app.use('/api/user', authRoute);
 
 // CONNECT TO DB
 mongoose.connect(process.env.DB_CONNECTION, {

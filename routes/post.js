@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post')
+const Post = require('../models/Post');
+const verify = require('./verifyToken')
 
 
 // GETS ALL POSTS
-router.get('/', async(req, res) => {
+router.get('/', verify, async(req, res) => {
     try {
         const posts = await Post.find();
         res.json(posts);
@@ -32,8 +33,6 @@ router.post('/', async(req, res) => {
 
 // SPECIFIC POST
 router.get('/:postId', async(req, res) => {
-    // console.log(req.params.postId);
-    // Post.findById(req.params.postId)
     try {
         const post = await Post.findById(req.params.postId);
         res.json(post);
