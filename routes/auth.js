@@ -19,13 +19,15 @@ router.post('/register', async(req, res) => {
 
     // CREATE USER
     const user = new User({
-        name: req.body.name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        phone: req.body.phone,
         email: req.body.email,
         password: hashedPassword
     });
     try {
         const savedUser = await user.save();
-        res.send({ user: user._id });
+        res.send({ user: user._id, code: 200, message: 'Successfully created user' });
 
     } catch (err) {
         res.status(400).send(err);
@@ -47,9 +49,8 @@ router.post('/login', async(req, res) => {
 
     // CREATE AND ASSIGN A TOKEN
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token)
+    res.header('auth-token', token).status(200).send({ token: token, message: 'successfully Logged in', code: 200 });
 
-    res.send('Logged in')
 })
 
 module.exports = router;
