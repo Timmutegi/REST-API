@@ -64,6 +64,12 @@ const storeValidation = data => {
         county: joi
             .string()
             .required(),
+        location: joi
+            .string()
+            .required(),
+        capacity: joi
+            .number()
+            .required(),
         phone: joi
             .number()
             .required(),

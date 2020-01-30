@@ -10,6 +10,14 @@ const StoreSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    location: {
+        type: String,
+        required: true
+    },
+    capacity: {
+        type: Number,
+        required: true
+    },
     street: {
         type: String,
         required: true

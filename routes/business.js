@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 // const tz = require('moment-timezone');
 // const moment = require('moment');
 const { storeValidation } = require('../validation');
+const { loginValidation } = require('../validation');
 
 // GET ALL STORES
 router.get('/', async(req, res) => {
@@ -28,8 +29,8 @@ router.get('/:storeID', async(req, res) => {
     }
 });
 
-// SUBMIT STORE
-router.post('/', async(req, res) => {
+// REGISTER STORE
+router.post('/register', async(req, res) => {
     const { error } = storeValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -40,9 +41,11 @@ router.post('/', async(req, res) => {
     const store = new Store({
         name: req.body.name,
         county: req.body.county,
+        location: req.body.location,
         street: req.body.street,
         email: req.body.email,
         phone: req.body.phone,
+        capacity: req.body.capacity,
         password: hashedPassword
     });
 
@@ -53,6 +56,28 @@ router.post('/', async(req, res) => {
     } catch (err) {
         res.json({ message: err });
     }
+});
+
+// LOGIN
+router.post('/login', async(req, res) => {
+    // VALIDATE
+    const { error } = loginValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    // CHECK IF EMAIL EXISTS
+    const store = await Store.findOne({ email: req.body.email });
+    if (!store) return res.status(400).send('Email or password is wrong');
+
+    // CHECK IF PASSWORD IS CORRECT
+    const validPass = await bcrypt.compare(req.body.password, store.password);
+    if (!validPass) return res.status(400).send('Invalid password');
+
+    res.status(200).send({ code: 200, message: 'successfully logged in' });
+
+    // CREATE AND ASSIGN A TOKEN
+    // const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    // res.header('auth-token', token).status(200).send({ token: token, message: 'successfully Logged in', code: 200 });
+
 })
 
 // UPDATE STORE
