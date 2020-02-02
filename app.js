@@ -22,7 +22,7 @@ app.use('/api/business', storeRoute);
 
 
 // CONNECT TO DB
-mongoose.connect(process.env.DB_CONNECTION, {
+mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
