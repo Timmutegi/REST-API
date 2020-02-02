@@ -31,4 +31,4 @@ mongoose.connect(process.env.DB_CONNECTION, {
         console.log(`DB Connection Error: ${err.message}`)
     })
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
