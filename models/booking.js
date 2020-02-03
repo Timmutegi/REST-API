@@ -12,7 +12,6 @@ const BookingSchema = mongoose.Schema({
     },
     status: {
         type: String,
-        required: true,
         Default: 'pending'
     },
     date: {

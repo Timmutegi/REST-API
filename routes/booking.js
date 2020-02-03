@@ -31,9 +31,8 @@ router.post('/create', async(req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     const booking = new Booking({
-        name: req.body.name,
-        county: req.body.county,
-        location: req.body.location
+        name: req.body.user_ID,
+        county: req.body.shop_ID
     });
 
     try {
