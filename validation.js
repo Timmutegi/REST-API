@@ -80,7 +80,7 @@ const storeValidation = data => {
     return schema.validate(data);
 };
 
-// STORE VALIDATION
+// BOOKING VALIDATION
 const bookingValidation = data => {
     const schema = joi.object({
         user_ID: joi
