@@ -91,7 +91,6 @@ const bookingValidation = data => {
             .required(),
         status: joi
             .string()
-            .required(),
     });
     return schema.validate(data);
 };
