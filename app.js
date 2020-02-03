@@ -13,11 +13,13 @@ app.use(cors());
 const postsRoute = require('./routes/post');
 const authRoute = require('./routes/auth');
 const storeRoute = require('./routes/business');
+const bookingRoute = require('./routes/booking')
 
 // ROUTE MIDDLEWARES
 app.use('/api/posts', postsRoute);
 app.use('/api/user', authRoute);
 app.use('/api/business', storeRoute);
+app.use('/api/booking', bookingRoute)
 
 
 

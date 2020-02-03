@@ -80,7 +80,24 @@ const storeValidation = data => {
     return schema.validate(data);
 };
 
+// STORE VALIDATION
+const bookingValidation = data => {
+    const schema = joi.object({
+        user_ID: joi
+            .string()
+            .required(),
+        shop_ID: joi
+            .string()
+            .required(),
+        status: joi
+            .string()
+            .required(),
+    });
+    return schema.validate(data);
+};
+
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.storeValidation = storeValidation;
+module.exports.bookingValidation = bookingValidation;
