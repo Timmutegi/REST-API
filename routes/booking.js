@@ -65,3 +65,5 @@ router.delete('/:bookingID', async(req, res) => {
         res.json({ message: err });
     }
 });
+
+module.exports = router;

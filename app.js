@@ -21,8 +21,6 @@ app.use('/api/user', authRoute);
 app.use('/api/business', storeRoute);
 app.use('/api/booking', bookingRoute)
 
-
-
 // CONNECT TO DB
 mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
