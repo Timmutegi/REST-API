@@ -46,9 +46,9 @@ router.post('/create', async(req, res) => {
 });
 
 // UPDATE BOOKING
-router.patch('/:storeID', async(req, res) => {
+router.patch('/:bookingID', async(req, res) => {
     try {
-        const updatedBooking = await Booking.updateOne({ _id: req.params.storeID }, { $set: { status: req.body.status } });
+        const updatedBooking = await Booking.updateOne({ _id: req.params.bookingID }, { $set: { status: req.body.status } });
         res.status(200).send({ message: 'Successful' });
 
     } catch (err) {
