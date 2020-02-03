@@ -17,7 +17,7 @@ router.get('/', async(req, res) => {
 // GET SPECIFIC BOOKING
 router.get('/:bookingID', async(req, res) => {
     try {
-        const booking = await Booking.findById(req.params.storeID);
+        const booking = await Booking.findById(req.params.bookingID);
         res.json(booking);
 
     } catch (err) {
