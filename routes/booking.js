@@ -8,7 +8,15 @@ const { bookingValidation } = require('../validation');
 // GET ALL BOOKINGS
 router.get('/', async(req, res) => {
     try {
-        const bookings = await Booking.find();
+        // const bookings = await Booking.find();
+        const bookings = await Booking.aggregate([{
+            $lookup: {
+                from: User,
+                localField: 'user_ID',
+                foreignField: '_id',
+                as: 'combined'
+            }
+        }])
         res.json(bookings);
 
     } catch (err) {
