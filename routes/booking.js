@@ -3,14 +3,22 @@ const router = express.Router();
 const Booking = require('../models/booking');
 const User = require('../models/User');
 const lodash = require('lodash');
+const db = require('../app');
 const { bookingValidation } = require('../validation');
 
 // GET ALL BOOKINGS
 router.get('/', async(req, res) => {
     try {
-        const bookings = await Booking.find();
-        const users = await User.find();
-        res.json({ users, bookings });
+        // const bookings = await Booking.find();
+        const bookings = await db.Booking.aggregate([{
+            $lookup: {
+                from: User,
+                localField: "user_ID",
+                foreignField: "_id",
+                as: "combined"
+            }
+        }])
+        res.json(bookings);
 
     } catch (err) {
         res.json({ message: err });
