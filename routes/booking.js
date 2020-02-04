@@ -11,7 +11,7 @@ router.get('/', async(req, res) => {
         // const bookings = await Booking.find();
         const bookings = await Booking.aggregate([{
             $lookup: {
-                from: "User",
+                from: User,
                 localField: "user_ID",
                 foreignField: "_id",
                 as: "combined"
