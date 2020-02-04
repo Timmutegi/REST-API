@@ -9,7 +9,7 @@ const { bookingValidation } = require('../validation');
 router.get('/', async(req, res) => {
     try {
         // const bookings = await Booking.find();
-        const bookings = await Booking.find({}).populate('users');
+        const bookings = await Booking.find().populate('users');
         // const bookings = await Booking.aggregate([{
         //     $lookup: {
         //         from: user,
@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
         //         as: "combined"
         //     }
         // }])
-        res.json(bookings.users);
+        res.json(bookings);
 
     } catch (err) {
         res.json({ message: err });
