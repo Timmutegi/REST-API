@@ -9,7 +9,7 @@ const { bookingValidation } = require('../validation');
 router.get('/', async(req, res) => {
     try {
         // const bookings = await Booking.find();
-        const bookings = await Booking.find().populate('users');
+        const bookings = await Booking.find({}).populate('users');
         // const bookings = await Booking.aggregate([{
         //     $lookup: {
         //         from: user,
