@@ -8,7 +8,7 @@ const { bookingValidation } = require('../validation');
 // GET ALL BOOKINGS
 router.get('/', async(req, res) => {
     try {
-        const bookings = await Booking.find().populate('user_ID');
+        const bookings = await Booking.find().populate('user_ID').populate('shop_ID');
         res.json(bookings);
 
     } catch (err) {
@@ -19,9 +19,9 @@ router.get('/', async(req, res) => {
 // GET SPECIFIC BOOKING
 router.get('/:bookingID', async(req, res) => {
     try {
-        const booking = await Booking.findById(req.params.bookingID).populate('user_ID');
-        const filteredBooking = lodash.omit(booking.toObject(), ['password']);
-        res.json(filteredBooking);
+        const booking = await Booking.findById(req.params.bookingID).populate('user_ID').populate('shop_ID');
+        // const filteredBooking = lodash.omit(booking.toObject(), ['password']);
+        res.json(booking);
 
     } catch (err) {
         res.json({ message: err });
