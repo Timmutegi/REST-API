@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Booking = require('../models/booking');
+const User = require('../models/User');
 const { bookingValidation } = require('../validation');
 
 // GET ALL BOOKINGS
@@ -18,7 +19,8 @@ router.get('/', async(req, res) => {
 router.get('/:bookingID', async(req, res) => {
     try {
         const booking = await Booking.findById(req.params.bookingID);
-        res.json(booking);
+        const user = await User.findById(booking.user_ID);
+        res.json(user, booking);
 
     } catch (err) {
         res.json({ message: err });
