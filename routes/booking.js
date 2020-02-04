@@ -19,7 +19,7 @@ router.get('/', async(req, res) => {
 // GET SPECIFIC BOOKING
 router.get('/:bookingID', async(req, res) => {
     try {
-        const booking = await (await Booking.findById(req.params.bookingID)).populated('user_ID');
+        const booking = await Booking.findById(req.params.bookingID).populate('user_ID');
         const filteredBooking = lodash.omit(booking.toObject(), ['password']);
         res.json(filteredBooking);
 
