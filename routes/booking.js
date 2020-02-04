@@ -8,8 +8,9 @@ const { bookingValidation } = require('../validation');
 // GET ALL BOOKINGS
 router.get('/', async(req, res) => {
     try {
-        const bookings = await Booking.find('-password');
-        res.json(bookings);
+        const bookings = await Booking.find();
+        const users = await User.find();
+        res.json({ users, bookings });
 
     } catch (err) {
         res.json({ message: err });
