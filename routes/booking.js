@@ -20,7 +20,7 @@ router.get('/:bookingID', async(req, res) => {
     try {
         const booking = await Booking.findById(req.params.bookingID);
         const user = await User.findById(booking.user_ID);
-        res.json(user, booking);
+        res.json({ user, booking });
 
     } catch (err) {
         res.json({ message: err });
