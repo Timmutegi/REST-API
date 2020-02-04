@@ -22,7 +22,7 @@ app.use('/api/business', storeRoute);
 app.use('/api/booking', bookingRoute)
 
 // CONNECT TO DB
-const db = mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
@@ -32,5 +32,3 @@ const db = mongoose.connect(process.env.MONGODB_URI, {
     })
 
 app.listen(process.env.PORT || 3000);
-
-module.exports = db;

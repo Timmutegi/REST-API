@@ -3,12 +3,15 @@ const router = express.Router();
 const Booking = require('../models/booking');
 const User = require('../models/User');
 const lodash = require('lodash');
-const db = require('../app');
 const { bookingValidation } = require('../validation');
 
 // GET ALL BOOKINGS
 router.get('/', async(req, res) => {
     try {
+        const db = mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
         // const bookings = await Booking.find();
         const bookings = await db.Booking.aggregate([{
             $lookup: {
