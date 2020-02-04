@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
         //         as: "combined"
         //     }
         // }])
-        res.json(bookings);
+        res.json(bookings.users);
 
     } catch (err) {
         res.json({ message: err });
