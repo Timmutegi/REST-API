@@ -8,19 +8,15 @@ const { bookingValidation } = require('../validation');
 // GET ALL BOOKINGS
 router.get('/', async(req, res) => {
     try {
-        // const db = mongoose.connect(process.env.MONGODB_URI, {
-        //     useNewUrlParser: true,
-        //     useUnifiedTopology: true
-        // });
-        const bookings = await Booking.find();
-        // const bookings = await db.Booking.aggregate([{
-        //     $lookup: {
-        //         from: User,
-        //         localField: "user_ID",
-        //         foreignField: "_id",
-        //         as: "combined"
-        //     }
-        // }])
+        // const bookings = await Booking.find();
+        const bookings = await Booking.aggregate([{
+            $lookup: {
+                from: "User",
+                localField: "user_ID",
+                foreignField: "_id",
+                as: "combined"
+            }
+        }])
         res.json(bookings);
 
     } catch (err) {
