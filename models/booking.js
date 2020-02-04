@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 
 const BookingSchema = mongoose.Schema({
     user_ID: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     shop_ID: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Stores',
         required: true
     },
     status: {
