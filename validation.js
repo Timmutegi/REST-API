@@ -83,7 +83,7 @@ const storeValidation = data => {
 // BOOKING VALIDATION
 const bookingValidation = data => {
     const schema = joi.object({
-        booker: joi
+        customer: joi
             .string()
             .required(),
         shop: joi
