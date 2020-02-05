@@ -22,6 +22,7 @@ router.get('/', async(req, res) => {
 router.get('/:storeID', async(req, res) => {
     try {
         const store = await Store.findById(req.params.storeID);
+        store.createdAt = this.toString(store.createdAt);
         res.json(store);
 
     } catch (err) {
