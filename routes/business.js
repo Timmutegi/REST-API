@@ -23,7 +23,7 @@ router.get('/:storeID', async(req, res) => {
     try {
         const store = await Store.findById(req.params.storeID);
         store.createdAt = store.createdAt.toString();
-        res.json(store);
+        res.json(store.createdAt);
 
     } catch (err) {
         res.json({ message: err });
