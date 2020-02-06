@@ -5,7 +5,7 @@ const Hours = require('../models/businessHours');
 // GET ALL BUSINESS WORKING HOURS
 router.get('/', async(req, res) => {
     try {
-        const bookings = await Booking.find().populate('shop');
+        const bookings = await Hours.find().populate('shop');
         res.json(bookings);
 
     } catch (err) {
