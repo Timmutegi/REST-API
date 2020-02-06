@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Booking = require('../models/booking');
-const User = require('../models/User');
 const lodash = require('lodash');
 const { bookingValidation } = require('../validation');
 
