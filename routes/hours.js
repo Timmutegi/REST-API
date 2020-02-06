@@ -13,6 +13,18 @@ router.get('/', async(req, res) => {
     }
 });
 
+// GET SPECIFIC BUSINESS WORKING HOURS
+router.get('/:storeID', async(req, res) => {
+    try {
+        const hours = await Hours.find({ shop: req.params.storeID });
+        res.json(hours);
+
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+
 // SUBMIT BUSINESS WORKING HOURS
 router.post('/', async(req, res) => {
     // const { error } = bookingValidation(req.body);

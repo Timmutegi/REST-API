@@ -15,6 +15,18 @@ router.get('/', async(req, res) => {
     }
 });
 
+// GET SPECIFIC SHOP BOOKINGS
+router.get('/:storeID', async(req, res) => {
+    try {
+        const booking = await Booking.find({ shop: req.params.storeID }).populate('customer');
+        res.json(booking);
+
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+
 // GET SPECIFIC BOOKING
 router.get('/:bookingID', async(req, res) => {
     try {
