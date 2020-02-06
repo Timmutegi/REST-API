@@ -13,13 +13,15 @@ app.use(cors());
 const postsRoute = require('./routes/post');
 const authRoute = require('./routes/auth');
 const storeRoute = require('./routes/business');
-const bookingRoute = require('./routes/booking')
+const bookingRoute = require('./routes/booking');
+const hoursRoute = require('./routes/hours')
 
 // ROUTE MIDDLEWARES
 app.use('/api/posts', postsRoute);
 app.use('/api/user', authRoute);
 app.use('/api/business', storeRoute);
-app.use('/api/booking', bookingRoute)
+app.use('/api/booking', bookingRoute);
+app.use('/api/workhours', hoursRoute)
 
 // CONNECT TO DB
 mongoose.connect(process.env.MONGODB_URI, {
