@@ -6,7 +6,7 @@ const HoursSchema = mongoose.Schema({
         ref: 'Stores',
         required: true
     },
-    hours: [Array]
+    hours: Array
 });
 
 module.exports = mongoose.model('business-hours', HoursSchema);
