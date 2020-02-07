@@ -44,4 +44,15 @@ router.post('/', async(req, res) => {
     }
 });
 
+// UPDATE BUSINESS WORKING HOURS
+router.patch('/:storeID', async(req, res) => {
+    try {
+        const updatedHours = await Hours.updateOne({ _id: req.params.storeID }, { $set: { hours: req.body.hours } });
+        res.status(200).send({ message: 'Successful' });
+
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
 module.exports = router;
