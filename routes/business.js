@@ -83,7 +83,7 @@ router.post('/login', async(req, res) => {
 // UPDATE STORE
 router.patch('/:storeID', async(req, res) => {
     try {
-        const updatedPost = await Store.update({ _id: req.params.storeID }, {
+        const updatedPost = await Store.findOneAndUpdate({ _id: req.params.storeID }, {
             $set: {
                 name: req.body.name,
                 location: req.body.location,
@@ -92,7 +92,9 @@ router.patch('/:storeID', async(req, res) => {
                 capacity: req.body.capacity,
                 email: req.body.email,
                 phone: req.body.phone
-            }
+            },
+        }, {
+            new: true
         });
         res.status(200).send({ message: 'Successful' });
 
