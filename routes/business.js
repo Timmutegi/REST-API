@@ -83,7 +83,7 @@ router.post('/login', async(req, res) => {
 // UPDATE STORE
 router.patch('/:storeID', async(req, res) => {
     try {
-        const updatedPost = await Store.updateOne({ _id: req.params.storeID }, {
+        const updatedPost = await Store.update({ _id: req.params.storeID }, {
             $set: {
                 name: req.body.name,
                 location: req.body.location,
