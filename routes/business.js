@@ -84,15 +84,7 @@ router.post('/login', async(req, res) => {
 router.patch('/:storeID', async(req, res) => {
     try {
         const updatedPost = await Store.findOneAndUpdate({ _id: req.params.storeID }, {
-            $set: {
-                name: req.body.name,
-                location: req.body.location,
-                street: req.body.street,
-                county: req.body.county,
-                capacity: req.body.capacity,
-                email: req.body.email,
-                phone: req.body.phone
-            },
+            $set: req.body
         }, {
             new: true
         });
