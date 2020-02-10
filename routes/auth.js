@@ -41,15 +41,15 @@ router.post('/login', async(req, res) => {
 
     // CHECK IF EMAIL EXISTS
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send('Email or password is wrong');
+    if (!user) return res.status(400).send({ error: new Error('Email or password is wrong') });
 
     // CHECK IF PASSWORD IS CORRECT
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if (!validPass) return res.status(400).send('Invalid password');
+    if (!validPass) return res.status(400).send({ error: new Error('Invalid password') });
 
     // CREATE AND ASSIGN A TOKEN
     try {
-        const token = await jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+        const token = await jwt.sign({ _id: user._id }, 'skdnvkdsjnvsdkjn');
         res.header('auth-token', token).status(200).send({ token: token, message: 'successfully Logged in', code: 200 });
 
     } catch (error) {
