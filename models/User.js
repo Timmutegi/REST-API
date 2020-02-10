@@ -28,10 +28,8 @@ const UserSchema = mongoose.Schema({
         max: 1024,
         min: 6
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('User', UserSchema);
