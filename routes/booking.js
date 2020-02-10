@@ -38,6 +38,18 @@ router.get('/business/:storeID', async(req, res) => {
     }
 });
 
+// GET SPECIFIC CUSTOMER BOOKINGS
+router.get('/customer/:customerID', async(req, res) => {
+    try {
+        const bookings = await Booking.find({ customer: req.params.customerID }).populate('shop');
+        res.json(bookings);
+
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+
 // SUBMIT BOOKING
 router.post('/create', async(req, res) => {
     const { error } = bookingValidation(req.body);
