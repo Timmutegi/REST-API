@@ -53,7 +53,7 @@ router.post('/login', async(req, res) => {
         res.header('auth-token', token).status(200).send({ token: token, message: 'successfully Logged in', code: 200 });
 
     } catch (error) {
-        res.status(500).send({ error: error });
+        res.status(500).send({ error: error.message });
     }
 
 })
