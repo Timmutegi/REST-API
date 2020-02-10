@@ -50,7 +50,7 @@ router.post('/login', async(req, res) => {
     // CREATE AND ASSIGN A TOKEN
     try {
         const token = await jwt.sign({ _id: user._id }, 'skdnvkdsjnvsdkjn');
-        res.header('auth-token', token).status(200).send({ token: token, message: 'successfully Logged in', code: 200 });
+        res.header('auth-token', token).status(200).send({ user: user._id, token: token, message: 'successfully Logged in', code: 200 });
 
     } catch (error) {
         res.status(500).send({ error: error.message });
