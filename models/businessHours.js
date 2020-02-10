@@ -7,6 +7,8 @@ const HoursSchema = mongoose.Schema({
         required: true
     },
     hours: Array
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('business-hours', HoursSchema);
