@@ -138,4 +138,4 @@ module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.storeValidation = storeValidation;
 module.exports.bookingValidation = bookingValidation;
-nodule.exports.testValidation = testValidation;
+module.exports.testValidation = testValidation;
