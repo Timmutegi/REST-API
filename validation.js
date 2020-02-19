@@ -116,7 +116,7 @@ const testValidation = data => {
             .string()
             .min(6)
             .required(),
-        kra: joi
+        KRA: joi
             .string()
             .min(6)
             .required(),

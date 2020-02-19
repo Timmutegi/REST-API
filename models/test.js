@@ -21,7 +21,7 @@ const TestSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    kra: {
+    KRA: {
         type: String,
         required: true
     },
