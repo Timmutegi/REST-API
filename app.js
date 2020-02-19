@@ -14,14 +14,16 @@ const postsRoute = require('./routes/post');
 const authRoute = require('./routes/auth');
 const storeRoute = require('./routes/business');
 const bookingRoute = require('./routes/booking');
-const hoursRoute = require('./routes/hours')
+const hoursRoute = require('./routes/hours');
+const formRoute = require('./routes/test');
 
 // ROUTE MIDDLEWARES
 app.use('/api/posts', postsRoute);
 app.use('/api/user', authRoute);
 app.use('/api/business', storeRoute);
 app.use('/api/booking', bookingRoute);
-app.use('/api/workhours', hoursRoute)
+app.use('/api/workhours', hoursRoute);
+app.use('/api/multi-step-form', formRoute);
 
 // CONNECT TO DB
 mongoose.connect(process.env.MONGODB_URI, {

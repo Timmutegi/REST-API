@@ -96,8 +96,46 @@ const bookingValidation = data => {
     return schema.validate(data);
 };
 
+// TEST VALIDATION
+const testValidation = data => {
+    const schema = joi.object({
+        firstname: joi
+            .string()
+            .required(),
+        lastname: joi
+            .string()
+            .required(),
+        phone: joi
+            .number()
+            .required(),
+        email: joi
+            .string()
+            .required()
+            .email(),
+        nationalID: joi
+            .string()
+            .min(6)
+            .required(),
+        kra: joi
+            .string()
+            .min(6)
+            .required(),
+        companyName: joi
+            .string()
+            .required(),
+        companyLocation: joi
+            .string()
+            .required(),
+        companyRevenue: joi
+            .string()
+            .required()
+
+    });
+    return schema.validate(data);
+};
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.storeValidation = storeValidation;
 module.exports.bookingValidation = bookingValidation;
+nodule.exports.testValidation = testValidation;
