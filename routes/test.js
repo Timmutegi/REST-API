@@ -14,7 +14,7 @@ router.post('/', async(req, res) => {
         email: req.body.email,
         phone: req.body.phone,
         nationalID: req.body.nationalID,
-        KRA: req.body.kra,
+        KRA: req.body.KRA,
         companyName: req.body.companyName,
         companyLocation: req.body.companyLocation,
         companyRevenue: req.body.companyRevenue
