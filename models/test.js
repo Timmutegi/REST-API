@@ -34,7 +34,7 @@ const TestSchema = mongoose.Schema({
         required: true
     },
     companyRevenue: {
-        type: String,
+        type: Number,
         required: true
     }
 });

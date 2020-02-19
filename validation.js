@@ -127,7 +127,7 @@ const testValidation = data => {
             .string()
             .required(),
         companyRevenue: joi
-            .string()
+            .number()
             .required()
 
     });
