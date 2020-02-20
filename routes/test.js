@@ -28,4 +28,14 @@ router.post('/', async(req, res) => {
     }
 });
 
+// GET ONE 
+router.get('/:ID', async(req, res) => {
+    try {
+        const data = await Test.findById(req.params.ID);
+        res.status(200).send({ data, code: 200 });
+    } catch (err) {
+        res.status(400).send({ message: err });
+    }
+})
+
 module.exports = router;
