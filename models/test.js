@@ -10,7 +10,7 @@ const TestSchema = mongoose.Schema({
         required: true
     },
     phone: {
-        type: String,
+        type: Number,
         required: true
     },
     email: {
@@ -18,7 +18,7 @@ const TestSchema = mongoose.Schema({
         required: true
     },
     nationalID: {
-        type: String,
+        type: Number,
         required: true
     },
     KRA: {

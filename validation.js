@@ -113,12 +113,11 @@ const testValidation = data => {
             .required()
             .email(),
         nationalID: joi
-            .string()
-            .min(6)
+            .number()
+            .min(8)
             .required(),
         KRA: joi
             .string()
-            .min(6)
             .required(),
         companyName: joi
             .string()
