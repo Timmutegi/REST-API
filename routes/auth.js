@@ -27,7 +27,7 @@ router.post('/register', async(req, res) => {
     });
     try {
         const savedUser = await user.save();
-        res.send({ user: user._id, code: 200, message: 'Successfully created user' });
+        res.send({ user: user._id, firstname: user.firstname, code: 200, message: 'Successfully created user' });
 
     } catch (err) {
         res.status(400).send(err);
@@ -50,7 +50,7 @@ router.post('/login', async(req, res) => {
     // CREATE AND ASSIGN A TOKEN
     try {
         const token = await jwt.sign({ _id: user._id }, 'skdnvkdsjnvsdkjn');
-        res.header('auth-token', token).status(200).send({ user: user._id, token: token, message: 'successfully Logged in', code: 200 });
+        res.header('auth-token', token).status(200).send({ user: user._id, firstname: user.firstname, token: token, message: 'successfully Logged in', code: 200 });
 
     } catch (error) {
         res.status(500).send({ error: error.message });
