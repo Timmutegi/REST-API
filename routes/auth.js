@@ -41,11 +41,13 @@ router.post('/login', async(req, res) => {
 
     // CHECK IF EMAIL EXISTS
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send({ code: 400, details: 'Email or Password is wrong', error: new Error('Email or password is wrong') });
+    if (!user) return res.status(400).send({ code: 400, details: 'Email or Password is wrong' });
 
     // CHECK IF PASSWORD IS CORRECT
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if (!validPass) return res.status(400).send({ code: 400, details: 'Email or Password is wrong', error: new Error('Invalid password') });
+    // if (!validPass) return res.status(400).send({ code: 400, details: 'Email or Password is wrong', error: new Error('Invalid password') });
+    if (!validPass) return res.status(400).send({ code: 400, details: 'Email or Password is wrong' });
+
 
     // CREATE AND ASSIGN A TOKEN
     try {
