@@ -6,11 +6,9 @@ const registerValidation = data => {
     const schema = joi.object({
         firstname: joi
             .string()
-            .min(6)
             .required(),
         lastname: joi
             .string()
-            .min(6)
             .required(),
         phone: joi
             .number()
