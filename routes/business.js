@@ -18,6 +18,16 @@ router.get('/', async(req, res) => {
     }
 });
 
+// GET STORES IN SPECIFIC LOCATION
+router.get('/stores/:location', async(req, res) => {
+    try {
+        const stores = await Store.find({ location: req.params.location });
+        res.json(stores);
+    } catch (err) {
+        res.json({ message: err });
+    }
+})
+
 // GET SPECIFIC STORE
 router.get('/:storeID', async(req, res) => {
     try {
