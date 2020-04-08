@@ -24,19 +24,6 @@ router.get('/:storeID', async(req, res) => {
     }
 });
 
-// GET SPECIFIC DAY'S BUSINESS WORKING HOURS
-router.get('/:storeID/hours', async(req, res) => {
-    try {
-        const business = await Hours.find({ shop: req.params.storeID });
-        const hours = business[0].hours[0];
-        res.json(hours);
-
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
-
-
 // SUBMIT BUSINESS WORKING HOURS
 router.post('/', async(req, res) => {
     // const { error } = bookingValidation(req.body);
