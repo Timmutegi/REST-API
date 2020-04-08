@@ -29,7 +29,7 @@ router.get('/:storeID/:weekday', async(req, res) => {
     try {
         const business = await Hours.find({ shop: req.params.storeID });
         const weekday = req.params.weekday;
-        const hours = business[0].hours;
+        const hours = business[0].hours[0].weekday;
 
         res.json(hours);
     } catch (err) {
