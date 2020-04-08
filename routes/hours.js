@@ -25,13 +25,13 @@ router.get('/:storeID', async(req, res) => {
 });
 
 // GET SPECIFIC DAY'S BUSINESS WORKING HOURS
-router.get('/:storeID/:weekday', async(req, res) => {
+router.get('/:storeID/hours', async(req, res) => {
     try {
         const business = await Hours.find({ shop: req.params.storeID });
         const weekday = req.params.weekday;
-        const hours = business[0].hours[0].weekday;
-
+        const hours = business[0].hours[0];
         res.json(hours);
+
     } catch (err) {
         res.json({ message: err });
     }
