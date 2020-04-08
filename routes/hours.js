@@ -16,8 +16,8 @@ router.get('/', async(req, res) => {
 // GET SPECIFIC BUSINESS WORKING HOURS
 router.get('/:storeID', async(req, res) => {
     try {
-        const hours = await Hours.find({ shop: req.params.storeID });
-        res.json(hours);
+        const business = await Hours.find({ shop: req.params.storeID });
+        res.json(business[0].hours[0]);
 
     } catch (err) {
         res.json({ message: err });
@@ -28,7 +28,6 @@ router.get('/:storeID', async(req, res) => {
 router.get('/:storeID/hours', async(req, res) => {
     try {
         const business = await Hours.find({ shop: req.params.storeID });
-        const weekday = req.params.weekday;
         const hours = business[0].hours[0];
         res.json(hours);
 
