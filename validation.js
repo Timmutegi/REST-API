@@ -90,6 +90,9 @@ const bookingValidation = data => {
         status: joi
             .string()
             .required(),
+        date: joi
+            .date()
+            .required(),
     });
     return schema.validate(data);
 };
