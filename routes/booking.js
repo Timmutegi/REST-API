@@ -58,7 +58,8 @@ router.post('/create', async(req, res) => {
     const booking = new Booking({
         customer: req.body.customer,
         shop: req.body.shop,
-        status: req.body.status
+        status: req.body.status,
+        date: req.body.date
     });
 
     try {
