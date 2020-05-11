@@ -18,6 +18,10 @@ router.post('/', async(req, res) => {
     const { error } = subscribeValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
+    // CHECK IF EMAIL EXISTS
+    const user = await User.findOne({ email: req.body.email });
+    if (user) return res.status(400).send({ code: 400, details: 'You have already subscribed' });
+
     const subscriber = new Subscribers({
         email: req.body.email,
     });
