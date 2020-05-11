@@ -16,6 +16,7 @@ const storeRoute = require('./routes/business');
 const bookingRoute = require('./routes/booking');
 const hoursRoute = require('./routes/hours');
 const formRoute = require('./routes/test');
+const subscribeRoute = require('./routes/subscribers');
 
 // ROUTE MIDDLEWARES
 app.use('/api/posts', postsRoute);
@@ -24,6 +25,7 @@ app.use('/api/business', storeRoute);
 app.use('/api/booking', bookingRoute);
 app.use('/api/workhours', hoursRoute);
 app.use('/api/multi-step-form', formRoute);
+app.use('/api/subscribe', subscribeRoute);
 
 // CONNECT TO DB
 mongoose.connect(process.env.MONGODB_URI, {
