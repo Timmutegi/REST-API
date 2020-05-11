@@ -143,6 +143,25 @@ const subscribeValidation = data => {
             .email()
     })
     return schema.validate(data);
+};
+
+// RESET VALIDATION
+const resetValidation = data => {
+    const schema = joi.object({
+        email: joi
+            .string()
+            .required()
+            .email(),
+        password: joi
+            .string()
+            .required(),
+        phone: joi
+            .number()
+            .required()
+            .min(6)
+
+    })
+    return schema.validate(data)
 }
 
 module.exports.registerValidation = registerValidation;
@@ -151,3 +170,4 @@ module.exports.storeValidation = storeValidation;
 module.exports.bookingValidation = bookingValidation;
 module.exports.testValidation = testValidation;
 module.exports.subscribeValidation = subscribeValidation;
+module.exports.resetValidation = resetValidation;
