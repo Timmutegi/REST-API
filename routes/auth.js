@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
-const { registerValidation, loginValidation } = require('../validation');
+const { registerValidation, loginValidation, resetValidation } = require('../validation');
 const bcrypt = require('bcryptjs');
 
 router.post('/register', async(req, res) => {
@@ -57,7 +57,31 @@ router.post('/login', async(req, res) => {
     } catch (error) {
         res.status(500).send({ error: error.message });
     }
+});
 
-})
+router.patch('/reset', async(req, res) => {
+    // VALIDATE
+    const { error } = resetValidation(req.body);
+    if (error) return res.status(400).send({ code: 400, details: error.details[0].message });
+
+    // CHECK IF EMAIL EXISTS
+    const email = await User.findOne({ email: req.body.email });
+    if (!email) return res.status(400).send({ code: 400, details: 'Email is invalid' });
+
+    // CHECK IF PHONE NUMBER EXISTS
+    const phone = await User.findOne({ phone: req.body.phone });
+    if (!phone) return res.status(400).send({ code: 400, details: 'Phone Number is invalid' });
+
+    // HASH PASSWORD
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+    try {
+        const user = await User.updateOne({ email: req.body.email }, { $set: { password: hashedPassword } });
+        res.status(200).send({ message: 'Password Updated' });
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
 
 module.exports = router;
