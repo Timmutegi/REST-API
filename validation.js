@@ -134,8 +134,20 @@ const testValidation = data => {
     return schema.validate(data);
 };
 
+// SUBSCRIBE VALIDATION
+const subscribeValidation = data => {
+    const schema = joi.object({
+        email: joi
+            .string()
+            .required()
+            .email()
+    })
+    return schema.validate(data);
+}
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.storeValidation = storeValidation;
 module.exports.bookingValidation = bookingValidation;
 module.exports.testValidation = testValidation;
+module.exports.subscribeValidation = subscribeValidation;
