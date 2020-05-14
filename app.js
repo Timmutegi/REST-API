@@ -10,8 +10,8 @@ require('dotenv/config');
 
 app.use(express.json());
 app.use(cors());
-app.use(passport.initialize());
-app.use(googleStrategy);
+// app.use(passport.initialize());
+// app.use(googleStrategy);
 
 
 // Import Routes

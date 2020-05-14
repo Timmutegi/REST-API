@@ -1,6 +1,7 @@
 const passport = require('passport');
 const googleStrategy = require('passport-google-oauth20').Strategy;
-const config = require('./config');
+// const config = require('./config');
+require('dotenv/config');
 
 function extractProfile(profile) {
     let imageUrl = '';
@@ -17,9 +18,9 @@ function extractProfile(profile) {
 }
 
 passport.use(new googleStrategy({
-        clientID: config.clientId,
-        clientSecret: config.clientSecret,
-        callbackURL: config.callback,
+        clientID: process.env.clientId,
+        clientSecret: process.env.secret,
+        callbackURL: process.env.callback,
         accessType: 'offline',
         userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
     },
