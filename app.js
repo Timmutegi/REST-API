@@ -2,12 +2,17 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const passport = require('passport');
+const googleStrategy = require('./googleStrategy');
 
 require('dotenv/config');
 
 
 app.use(express.json());
 app.use(cors());
+app.use(passport.initialize());
+app.use(googleStrategy);
+
 
 // Import Routes
 const postsRoute = require('./routes/post');
@@ -17,6 +22,7 @@ const bookingRoute = require('./routes/booking');
 const hoursRoute = require('./routes/hours');
 const formRoute = require('./routes/test');
 const subscribeRoute = require('./routes/subscribers');
+const oauth = require('./routes/oauth')
 
 // ROUTE MIDDLEWARES
 app.use('/api/posts', postsRoute);
@@ -26,6 +32,7 @@ app.use('/api/booking', bookingRoute);
 app.use('/api/workhours', hoursRoute);
 app.use('/api/multi-step-form', formRoute);
 app.use('/api/subscribe', subscribeRoute);
+app.use('api/auth', oauth);
 
 // CONNECT TO DB
 mongoose.connect(process.env.MONGODB_URI, {
