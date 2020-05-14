@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Booking = require('../models/booking');
-const lodash = require('lodash');
+// const lodash = require('lodash');
 const { bookingValidation } = require('../validation');
 
 // GET ALL BOOKINGS
