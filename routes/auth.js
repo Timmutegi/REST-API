@@ -59,6 +59,7 @@ router.post('/login', async(req, res) => {
     }
 });
 
+// RESET PASSWORD 
 router.patch('/reset', async(req, res) => {
     // VALIDATE
     const { error } = resetValidation(req.body);
