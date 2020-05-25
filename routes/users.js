@@ -26,7 +26,7 @@ router.patch('/password/:userID', async(req, res) => {
     const newHashedPassword = await bcrypt.hash(req.body.newPassword, salt);
 
     try {
-        User.updateOne({ _id: req.params.userID }, { $set: { password: newHashedPassword } });
+        await User.updateOne({ _id: req.params.userID }, { $set: { password: newHashedPassword } });
         res.status(200).send({ code: 200, message: 'Updated Successfully' });
     } catch (err) {
         res.status(400).send({ message: err });
