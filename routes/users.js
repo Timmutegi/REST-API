@@ -23,7 +23,7 @@ router.patch('/password/:userID', async(req, res) => {
     if (!validPass) return res.status(400).send({ code: 400, details: 'Current password is invalid' });
 
     const salt = await bcrypt.genSalt(10);
-    const newHashedPassword = await bcrypt.hash(req, body.newPassword, salt);
+    const newHashedPassword = await bcrypt.hash(req.body.newPassword, salt);
 
     try {
         User.updateOne({ _id: req.body.id }, { $set: { password: newHashedPassword } });
