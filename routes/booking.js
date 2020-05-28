@@ -52,7 +52,7 @@ router.get('/customer/:customerID', async(req, res) => {
 // GET CUSTOMER PENDING BOOKINGS 
 router.get('/customer/pending/:ID', async(req, res) => {
     try {
-        const pending = await Booking.find({ customer: req.params.ID, status: { status: 'Pending' } }).populate('shop');
+        const pending = await Booking.find({ customer: req.params.ID, status: 'pending' }).populate('shop');
         res.json(pending);
     } catch (err) {
         res.json({ message: err });
