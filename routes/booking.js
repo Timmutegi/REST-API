@@ -49,6 +49,15 @@ router.get('/customer/:customerID', async(req, res) => {
     }
 });
 
+// GET CUSTOMER PENDING BOOKINGS 
+router.get('/customer/pending/:ID', async(req, res) => {
+    try {
+        const pending = await Booking.find({ customer: req.params.ID }, { status: 'Pending' });
+        res.json(pending);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
 
 // SUBMIT BOOKING
 router.post('/create', async(req, res) => {
