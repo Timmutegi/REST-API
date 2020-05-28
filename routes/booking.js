@@ -59,6 +59,27 @@ router.get('/customer/pending/:ID', async(req, res) => {
     }
 });
 
+// GET CUSTOMER ACTIVE BOOKINGS
+router.get('/customer/active/:ID', async(req, res) => {
+    try {
+        const active = await Booking.find({ customer: req.params.ID, status: 'Active' }).populate('shop');
+        res.json(active);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+// GET CUSTOMER COMPLETED BOOKINGS
+router.get('/customer/completed/:ID', async(req, res) => {
+    try {
+        const completed = await Booking.find({ customer: req.params.ID, status: 'Completed' }).populate('shop');
+        res.json(completed);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+
 // SUBMIT BOOKING
 router.post('/create', async(req, res) => {
     const { error } = bookingValidation(req.body);
