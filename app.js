@@ -2,11 +2,28 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 // const passport = require('passport');
 // const googleStrategy = require('./googleStrategy');
 
 require('dotenv/config');
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'Morbags API',
+            description: 'API for Morbags Web Applications',
+            contact: {
+                name: 'Timothy Mutegi'
+            },
+            servers: ['https://obscure-beyond-81246.herokuapp.com/api']
+        }
+    },
+    apis: ['routes/*.js']
+};
 
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerui.setup(swaggerDocs));
 
 app.use(express.json());
 app.use(cors());
