@@ -4,6 +4,16 @@ const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation, resetValidation } = require('../validation');
 const bcrypt = require('bcryptjs');
 
+/**
+ * @swagger
+ * /auth:
+ * post:
+ *  description: Creates a new User
+ *  responses:
+ *      '200':
+ *        description: A successful response
+ */
+
 router.post('/register', async(req, res) => {
     // VALIDATE BEFORE ADDING USER
     const { error } = registerValidation(req.body);
