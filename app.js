@@ -16,7 +16,8 @@ const swaggerOptions = {
             contact: {
                 name: 'Timothy Mutegi'
             },
-            servers: ['https://obscure-beyond-81246.herokuapp.com/api']
+            url: 'https://obscure-beyond-81246.herokuapp.com/api',
+            description: 'Development server'
         }
     },
     apis: ['.routes/*.js']
