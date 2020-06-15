@@ -7,11 +7,12 @@ const bcrypt = require('bcryptjs');
 /**
  * @swagger
  * /auth:
- * post:
- *  description: Creates a new User
- *  responses:
- *      '200':
- *        description: A successful response
+ *  post:
+ *      description: Creates a new user
+ *      responses:
+ *          '200':
+ *              description: A successful response
+ * 
  */
 
 router.post('/register', async(req, res) => {
