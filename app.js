@@ -19,7 +19,7 @@ const swaggerOptions = {
             servers: ['https://obscure-beyond-81246.herokuapp.com/api']
         }
     },
-    apis: ['./routes/*.js']
+    apis: ['.routes/*.js']
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
