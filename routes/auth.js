@@ -6,17 +6,27 @@ const bcrypt = require('bcryptjs');
 
 /**
  * @swagger
- * /register:
- *  post:
- *      tags: 
- *          - User
- *      name: Sign Up
- *      summary: Creates a new user
- *      consumes:
- *          - application/json
- *      responses:
- *          '200':
- *              description: A successful response
+ * tags:
+ *  name: Auth
+ *  description: Authentication
+ */
+
+/**
+ * @swagger
+ * path:
+ *  /register/
+ *      post:
+ *          summary: Creates a new user
+ *          tags: [Auth]
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/User'
+ *          responses:
+ *              "200":
+ *                  description: An object with the User's ID, firstname, code and success message
  * 
  */
 
