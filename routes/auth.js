@@ -58,7 +58,7 @@ router.post('/register', async(req, res) => {
  *          - User
  *      name: Login
  *      summary: Logs in a user
- *      consumes
+ *      consumes:
  *          - application/json
  *      responses:
  *          '200':
