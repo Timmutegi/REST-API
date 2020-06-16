@@ -17,13 +17,13 @@ const bcrypt = require('bcryptjs');
  *  /register/
  *		post:
  *			summary: Creates a new user
- *				tags: [Auth]
- *				requestBody:
- *					required: true
- *					content:
- *						application/json:
- *							schema:
- *								$ref: '#/components/schemas/User'
+ *			tags: [Auth]
+ *			requestBody:
+ *				required: true
+ *				content:
+ *					application/json:
+ *						schema:
+ *							$ref: '#/components/schemas/User'
  *				responses:
  *					"200":
  *						description: An object with the User's ID, firstname, code and success message
