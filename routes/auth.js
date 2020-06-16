@@ -11,7 +11,7 @@ const bcrypt = require('bcryptjs');
  *      tags: 
  *          - User
  *      name: Sign Up
- *      summary - Creates a new user
+ *      summary: Creates a new user
  *      description: Creates a new user
  *      consumes:
  *          - application/json
