@@ -15,10 +15,10 @@ const swaggerOptions = {
             version: '1.0.0',
             description: 'API for Morbags Web Application',
             contact: {
-                name: 'Timothy Mutegi'
+                name: 'Timothy Mutegi',
+                email: 'mutegi.timothy538@gmail.com'
             },
             url: 'https://obscure-beyond-81246.herokuapp.com/api',
-            description: 'Development server'
         }
     },
     apis: ['./routes/*.js']
