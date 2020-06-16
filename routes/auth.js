@@ -9,8 +9,9 @@ const bcrypt = require('bcryptjs');
  * /register:
  *  post:
  *      tags: 
- *          - Users
+ *          - User
  *      name: Sign Up
+ *      summary - Creates a new user
  *      description: Creates a new user
  *      consumes:
  *          - application/json
@@ -54,7 +55,13 @@ router.post('/register', async(req, res) => {
  * @swagger
  * /login:
  *  post:
+ *      tags:
+ *          - User
+ *      name: Login
+ *      summary: Logs in a user
  *      description: Logs in a user
+ *      consumes
+ *          - application/json
  *      responses:
  *          '200':
  *              description: A successful response
