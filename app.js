@@ -12,6 +12,7 @@ const swaggerOptions = {
     swaggerDefinition: {
         info: {
             title: 'Morbags API',
+            version: '1.0.0',
             description: 'API for Morbags Web Application',
             contact: {
                 name: 'Timothy Mutegi'
