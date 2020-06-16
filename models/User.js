@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 /**
  * @swagger
  *  components:
- *      schemas;
+ *      schemas:
  *          User:
  *              type: object
  *              required:
