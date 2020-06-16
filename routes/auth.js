@@ -8,7 +8,12 @@ const bcrypt = require('bcryptjs');
  * @swagger
  * /register:
  *  post:
+ *      tags: 
+ *          - Users
+ *      name: Sign Up
  *      description: Creates a new user
+ *      consumes:
+ *          - application/json
  *      responses:
  *          '200':
  *              description: A successful response
