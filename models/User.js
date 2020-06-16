@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 /**
- * @swagger
  *  components:
  *      schemas:
  *          User:
  *              type: object
  *              required:
- *                  -firstname
- *                  -lastname
- *                  -email
- *                  -phone
- *                  -password
+ *                  - firstname
+ *                  - lastname
+ *                  - email
+ *                  - phone
+ *                  - password
  *              properties:
  *                  name:
  *                      type: string
