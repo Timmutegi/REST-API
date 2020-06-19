@@ -21,7 +21,7 @@ const bcrypt = require('bcryptjs');
  *             requestBody:
  *                 required: true
  *                 content: 
- *                     application/json
+ *                     application/json:
  *                         schema:
  *                             $ref: '#/components/schemas/User'
  *             responses:
