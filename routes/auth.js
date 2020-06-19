@@ -23,38 +23,12 @@ const bcrypt = require('bcryptjs');
  *                 content: 
  *                     application/json:
  *                         schema:
- *                             $ref: '#/components/schemas/User'
- *             parameters:
- *                      -in: body
- *                      schema:
- *                          $ref: '#/components/schemas/User'
- *                          type: object
- *                          properties: 
- *                              firstname:
- *                                  type: string
- *                              lastname:
- *                                  type: string
- *                              phone:
- *                                  type: string
- *                              email:
- *                                  type: string
- *                              password:
- *                                  type: string
- *                                  format: password
- *                          required:
- *                              -firstname
- *                              -lastname
- *                              -phone
- *                              -email
- *                              -password
- *              
+ *                             $ref: '#/components/schemas/User'             
  *             responses:
  *                 '200':
  *                     description: A User schema
- *                     content:
- *                         application/json:
- *                             schema:
- *                                 $ref: '#/components/schemas/User'
+ *                     schema:
+ *                      $ref: '#/components/schemas/User'
  */
 router.post('/register', async(req, res) => {
     // VALIDATE BEFORE ADDING USER
