@@ -10,6 +10,7 @@ const swaggerUi = require('swagger-ui-express');
 require('dotenv/config');
 const swaggerOptions = {
     swaggerDefinition: {
+        components: {},
         info: {
             title: 'Morbags API',
             version: '1.0.0',
@@ -21,7 +22,7 @@ const swaggerOptions = {
             url: 'https://obscure-beyond-81246.herokuapp.com/api',
         }
     },
-    apis: ['./routes/*.js']
+    apis: ['./routes/*.js', './models/*.js']
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

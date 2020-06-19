@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 /**
+ * @swagger
  *  components:
  *      schemas:
  *          User:
@@ -25,6 +26,12 @@ const mongoose = require('mongoose');
  *                  password:
  *                      type: string
  *                      description: Must be a minimum of 6 characters
+ *              example:
+ *                  firstname: John
+ *                  lastname: Doe
+ *                  email: johndoe@gmail.com
+ *                  phone: +254710123456
+ *                  password: xxxxxxx
  *                      
  * 
  */
