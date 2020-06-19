@@ -14,7 +14,7 @@ const bcrypt = require('bcryptjs');
 /**
  * @swagger
  * path: 
- *     /users/:
+ *     /register:
  *         post:
  *             summary: Creates a new user
  *             tags: [Users]
@@ -24,6 +24,31 @@ const bcrypt = require('bcryptjs');
  *                     application/json:
  *                         schema:
  *                             $ref: '#/components/schemas/User'
+ *             parameters:
+ *                  -name: body
+ *                      in: body
+ *                      schema:
+ *                          $ref: '#/components/schemas/User'
+ *                          type: object
+ *                          properties: 
+ *                              firstname:
+ *                                  type: string
+ *                              lastname:
+ *                                  type: string
+ *                              phone:
+ *                                  type: string
+ *                              email:
+ *                                  type: string
+ *                              password:
+ *                                  type: string
+ *                                  format: password
+ *                          required:
+ *                              -firstname
+ *                              -lastname
+ *                              -phone
+ *                              -email
+ *                              -password
+ *              
  *             responses:
  *                 '200':
  *                     description: A User schema
