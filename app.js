@@ -10,7 +10,7 @@ const swaggerUi = require('swagger-ui-express');
 require('dotenv/config');
 const swaggerOptions = {
     swaggerDefinition: {
-        // components: {},
+        components: {},
         info: {
             title: 'Morbags API',
             version: '1.0.0',
