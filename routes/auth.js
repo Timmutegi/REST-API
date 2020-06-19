@@ -25,8 +25,7 @@ const bcrypt = require('bcryptjs');
  *                         schema:
  *                             $ref: '#/components/schemas/User'
  *             parameters:
- *                  -name: body
- *                      in: body
+ *                      -in: body
  *                      schema:
  *                          $ref: '#/components/schemas/User'
  *                          type: object
