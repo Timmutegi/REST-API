@@ -4,6 +4,34 @@ const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation, resetValidation } = require('../validation');
 const bcrypt = require('bcryptjs');
 
+/**
+ * @swagger
+ *  tags:
+ *      name: Users
+ *      description: User Management
+ */
+
+/**
+ * @swagger
+ * path: 
+ *     /users/:
+ *         post:
+ *             summary: Creates a new user
+ *             tags: [Users]
+ *             requestBody:
+ *                 required: true
+ *                 content: 
+ *                     application/json
+ *                         schema:
+ *                             $ref: '#/components/schemas/User'
+ *             responses:
+ *                 '200':
+ *                     description: A User schema
+ *                         content:
+ *                             application/json:
+ *                                 schema:
+ *                                     $ref: '#ref/components/schemas/User'
+ */
 router.post('/register', async(req, res) => {
     // VALIDATE BEFORE ADDING USER
     const { error } = registerValidation(req.body);
