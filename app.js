@@ -18,9 +18,11 @@ const swaggerOptions = {
             contact: {
                 name: 'Timothy Mutegi',
                 email: 'mutegi.timothy538@gmail.com'
-            },
-            url: 'https://obscure-beyond-81246.herokuapp.com/api',
-        }
+            }
+        },
+        servers: [{
+            url: 'https://obscure-beyond-81246.herokuapp.com/api'
+        }]
     },
     apis: ['./routes/*.js', './models/User.js']
 };
