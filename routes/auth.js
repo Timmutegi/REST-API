@@ -1,8 +1,10 @@
+const passport = require('passport');
 const router = require('express').Router();
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation, resetValidation } = require('../validation');
 const bcrypt = require('bcryptjs');
+
 
 /**
  * @swagger
@@ -125,5 +127,11 @@ router.patch('/reset', async(req, res) => {
         res.json({ message: err });
     }
 });
+
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
+
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    res.redirect('/reset')
+})
 
 module.exports = router;
