@@ -3,15 +3,37 @@ const mongoose = require('mongoose')
 const Google = require('../models/Google')
 
 module.exports = function(passport) {
-    passport.use(newGoogleStrategy({
-            clientID: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.nextTick.GOOGLE_CLIENT_SECRET,
-            callbackURL: '/api/users/auth/google/callback'
-        },
+    passport.use(
+        new GoogleStrategy({
+                clientID: process.env.GOOGLE_CLIENT_ID,
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+                callbackURL: '/api/users/google/callback'
+            },
 
-        async(accesToken, refreshToken, profile, done) => {
-            console.log(profile)
-        }))
+            async(accessToken, refreshToken, profile, done) => {
+                const newUser = {
+                    googleId: profile.id,
+                    displayName: profile.displayName,
+                    firstName: profile.name.givenName,
+                    lastName: profile.name.familyName,
+                    image: profile.photos[0].value,
+                }
+
+                try {
+                    let user = await Google.findOne({ googleId: profile.id })
+
+                    if (user) {
+                        done(null, user)
+                    } else {
+                        user = await Google.create(newUser)
+                        done(null, user)
+                    }
+                } catch (err) {
+                    console.error(err)
+                }
+            }
+        )
+    )
 
     passport.serializeUser((user, done) => {
         done(null, user.id)
