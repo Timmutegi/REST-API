@@ -4,10 +4,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-// const passport = require('passport');
+const passport = require('passport');
 // const googleStrategy = require('./googleStrategy');
 
 require('dotenv/config');
+
+// Passport config
+require('./config/passport')(passport)
+
 const swaggerOptions = {
     swaggerDefinition: {
         components: {},
@@ -32,9 +36,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(express.json());
 app.use(cors());
-// app.use(passport.initialize());
-// app.use(googleStrategy);
-
+app.use(passport.initialize());
 
 // Import Routes
 const postsRoute = require('./routes/post');
@@ -45,7 +47,6 @@ const hoursRoute = require('./routes/hours');
 const formRoute = require('./routes/test');
 const subscribeRoute = require('./routes/subscribers');
 const usersRoute = require('./routes/users');
-// const oauth = require('./routes/oauth');
 
 // ROUTE MIDDLEWARES
 app.use('/api/posts', postsRoute);
