@@ -1,13 +1,15 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const cors = require('cors');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const passport = require('passport');
-// const googleStrategy = require('./googleStrategy');
 
-require('dotenv/config');
+// require('dotenv/config');
+
+dotenv.config({ path: './config/config.env' })
 
 // Passport config
 require('./config/passport')(passport)
