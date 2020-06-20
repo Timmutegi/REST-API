@@ -131,7 +131,7 @@ router.patch('/reset', async(req, res) => {
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    res.redirect('https://luggage-hero-a0de7.web.app')
+    res.send(user)
 })
 
 module.exports = router;
